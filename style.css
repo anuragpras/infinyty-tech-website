@@ -159,6 +159,13 @@ header.scrolled { box-shadow: 0 2px 20px var(--shadow-color); }
 .linkedin-btn:hover { border-color: var(--primary); color: var(--primary); }
 .linkedin-btn svg { width: 14px; height: 14px; }
 
+.linkedin-icon-btn {
+  display: inline-flex; align-items: center; flex-shrink: 0;
+  border-radius: 8px; transition: transform .2s, box-shadow .2s;
+}
+.linkedin-icon-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(10,102,194,.35); }
+.linkedin-icon-btn svg { display: block; border-radius: 6px; }
+
 /* ── CASE STUDIES ── */
 .case-study {
   display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
