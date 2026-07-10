@@ -141,14 +141,21 @@ header.scrolled { box-shadow: 0 2px 20px var(--shadow-color); }
 
 /* ── TEAM CARDS ── */
 .team-card {
-  background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px;
-  padding: 1.5rem; box-shadow: 0 2px 12px var(--shadow-color);
+  background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
+  padding: 2.5rem; box-shadow: 0 4px 20px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.team-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
-.team-name-row { display: flex; align-items: center; gap: .6rem; }
-.team-name-row svg { width: 22px; height: 22px; color: var(--primary); flex-shrink: 0; }
-.team-header h3 { font-size: 1.05rem; font-weight: 700; }
-.team-card p { font-size: .9rem; color: var(--text-muted); line-height: 1.7; }
+.team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--shadow-color);
+}
+.team-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+.team-name-row { display: flex; align-items: center; gap: .8rem; }
+.team-name-row svg { width: 28px; height: 28px; color: var(--primary); flex-shrink: 0; }
+.team-header h3 { font-size: 1.5rem; font-weight: 800; }
+.team-name-link { color: inherit; text-decoration: none; transition: color .2s; }
+.team-name-link:hover { color: var(--primary); text-decoration: none; }
+.team-card p { font-size: 1.05rem; color: var(--text-muted); line-height: 1.75; }
 .linkedin-btn {
   display: inline-flex; align-items: center; gap: .35rem;
   border: 1.5px solid var(--border); border-radius: 6px;
@@ -158,6 +165,7 @@ header.scrolled { box-shadow: 0 2px 20px var(--shadow-color); }
 }
 .linkedin-btn:hover { border-color: var(--primary); color: var(--primary); }
 .linkedin-btn svg { width: 14px; height: 14px; }
+
 
 .linkedin-icon-btn {
   display: inline-flex; align-items: center; flex-shrink: 0;
