@@ -107,7 +107,7 @@ header.scrolled { box-shadow: 0 2px 20px var(--shadow-color); }
 /* ── SECTIONS ── */
 .section { padding: 5rem 1.5rem; max-width: 1200px; margin: 0 auto; }
 .section-sm { padding: 3.5rem 1.5rem; max-width: 1200px; margin: 0 auto; }
-.section-full { padding: 5rem 1.5rem; }
+.section-full { padding: 0; }
 .section-bg { background: var(--section-bg); }
 
 /* ── HEADINGS ── */
