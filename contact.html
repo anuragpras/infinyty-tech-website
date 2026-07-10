@@ -15,6 +15,35 @@
   <style>
     .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
     @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    /* ── Contact Form ── */
+    .cf-card { max-width: 720px; margin: 4rem auto 0; background: var(--card-bg); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem 2.75rem; box-shadow: 0 4px 32px var(--shadow-color); scroll-margin-top: 90px; }
+    .cf-card h2 { font-size: 1.75rem; font-weight: 800; color: var(--text); margin-bottom: .5rem; }
+    .cf-card .cf-sub { font-size: .95rem; color: var(--text-muted); margin-bottom: 2rem; }
+    .cf-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .cf-field { display: flex; flex-direction: column; gap: .35rem; }
+    .cf-field label { font-size: .85rem; font-weight: 600; color: var(--text); }
+    .cf-field label span { color: #ef4444; }
+    .cf-field input,
+    .cf-field textarea {
+      font-family: 'Inter', sans-serif;
+      font-size: .9rem;
+      color: var(--text);
+      background: var(--bg);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: .7rem 1rem;
+      width: 100%;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      resize: vertical;
+    }
+    .cf-field input::placeholder, .cf-field textarea::placeholder { color: var(--text-muted); }
+    .cf-field input:focus, .cf-field textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(1,97,239,.12); }
+    .cf-submit { width: 100%; justify-content: center; padding: .75rem 2rem; font-size: .95rem; }
+    .cf-status { text-align: center; font-size: .9rem; font-weight: 500; padding: .5rem 0; display: none; }
+    @media (max-width: 600px) { .cf-card { padding: 1.75rem 1.25rem; } .cf-row { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -95,46 +124,35 @@
     </div>
 
     <!-- CONTACT FORM -->
-    <div id="contact-form" style="margin-top:4rem; scroll-margin-top:90px;">
-      <div style="max-width:720px;margin:0 auto;background:var(--card-bg);border:1px solid var(--border);border-radius:20px;padding:2.5rem 2.75rem;box-shadow:0 4px 32px rgba(0,0,0,.08);">
-        <div class="text-center" style="margin-bottom:2rem;">
-          <h2 class="section-title" style="font-size:1.75rem;">Send Us a Message</h2>
-          <p class="section-sub">Fill in the form below and we'll get back to you within 24 hours.</p>
-        </div>
-      <form action="https://formspree.io/f/mqevrnvd" method="POST" id="formspree-form" style="max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:1.25rem;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
-          <div>
-            <label for="name" style="display:block;font-size:.875rem;font-weight:600;margin-bottom:.4rem;color:var(--text);">Full Name <span style="color:#ef4444;">*</span></label>
-            <input type="text" id="name" name="name" required placeholder="Your full name"
-              style="width:100%;padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:8px;font-size:.95rem;background:var(--card-bg);color:var(--text);outline:none;transition:border-color .2s;"
-              onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'">
+    <div id="contact-form" class="cf-card">
+      <div class="text-center">
+        <h2>Send Us a Message</h2>
+        <p class="cf-sub">Fill in the form below and we'll get back to you within 24 hours.</p>
+      </div>
+      <form action="https://formspree.io/f/mqevrnvd" method="POST" id="formspree-form" class="cf-form">
+        <div class="cf-row">
+          <div class="cf-field">
+            <label for="name">Full Name <span>*</span></label>
+            <input type="text" id="name" name="name" required placeholder="Your full name">
           </div>
-          <div>
-            <label for="email" style="display:block;font-size:.875rem;font-weight:600;margin-bottom:.4rem;color:var(--text);">Email Address <span style="color:#ef4444;">*</span></label>
-            <input type="email" id="email" name="email" required placeholder="you@company.com"
-              style="width:100%;padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:8px;font-size:.95rem;background:var(--card-bg);color:var(--text);outline:none;transition:border-color .2s;"
-              onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'">
+          <div class="cf-field">
+            <label for="email">Email Address <span>*</span></label>
+            <input type="email" id="email" name="email" required placeholder="you@company.com">
           </div>
         </div>
-        <div>
-          <label for="phone" style="display:block;font-size:.875rem;font-weight:600;margin-bottom:.4rem;color:var(--text);">Phone Number</label>
-          <input type="tel" id="phone" name="phone" placeholder="+91 99999 00000"
-            style="width:100%;padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:8px;font-size:.95rem;background:var(--card-bg);color:var(--text);outline:none;transition:border-color .2s;"
-            onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'">
+        <div class="cf-field">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="+91 99999 00000">
         </div>
-        <div>
-          <label for="message" style="display:block;font-size:.875rem;font-weight:600;margin-bottom:.4rem;color:var(--text);">Message / Project Details <span style="color:#ef4444;">*</span></label>
-          <textarea id="message" name="message" required rows="5" placeholder="Tell us about your project, goals, or questions..."
-            style="width:100%;padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:8px;font-size:.95rem;background:var(--card-bg);color:var(--text);outline:none;resize:vertical;transition:border-color .2s;font-family:inherit;"
-            onfocus="this.style.borderColor='var(--primary)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+        <div class="cf-field">
+          <label for="message">Message / Project Details <span>*</span></label>
+          <textarea id="message" name="message" required rows="5" placeholder="Tell us about your project, goals, or questions..."></textarea>
         </div>
-        <div>
-          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;padding:.85rem 2rem;font-size:1rem;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-            Send Message
-          </button>
-        </div>
-        <div id="form-status" style="text-align:center;font-size:.9rem;display:none;"></div>
+        <button type="submit" class="btn-primary cf-submit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+          Send Message
+        </button>
+        <p id="form-status" class="cf-status"></p>
       </form>
       <script>
         (function() {
@@ -142,21 +160,26 @@
           var status = document.getElementById('form-status');
           form.addEventListener('submit', function(e) {
             e.preventDefault();
-            var data = new FormData(form);
-            fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+            var btn = form.querySelector('button[type=submit]');
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+            fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } })
               .then(function(r) {
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> Send Message';
+                btn.disabled = false;
+                status.style.display = 'block';
                 if (r.ok) {
-                  status.style.display = 'block';
                   status.style.color = '#22c55e';
-                  status.textContent = '✓ Message sent! We\'ll get back to you within 24 hours.';
+                  status.textContent = '\u2713 Message sent! We\'ll get back to you within 24 hours.';
                   form.reset();
                 } else {
-                  status.style.display = 'block';
                   status.style.color = '#ef4444';
                   status.textContent = 'Something went wrong. Please try again or email us directly.';
                 }
               })
               .catch(function() {
+                btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> Send Message';
+                btn.disabled = false;
                 status.style.display = 'block';
                 status.style.color = '#ef4444';
                 status.textContent = 'Network error. Please try again or email us directly.';
@@ -164,8 +187,7 @@
           });
         })();
       </script>
-      </div><!-- end card wrapper -->
-    </div><!-- end contact-form -->
+    </div><!-- end cf-card -->
   </div><!-- end section -->
 </main>
 
