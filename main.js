@@ -32,15 +32,11 @@ if (hamburger && mobileMenu) {
 }
 
 // ── ACTIVE NAV LINK ──
-const path = location.pathname.split('/').pop();
-let currentPage = path ? path : 'index.html';
-if (!currentPage.endsWith('.html') && currentPage !== '') {
-    currentPage += '.html';
-}
-
+const currentUrl = window.location.href.split('?')[0].split('#')[0];
 document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
-  const href = a.getAttribute('href');
-  if (href === currentPage || (path === '' && href === 'index.html')) {
+  // Use the absolute URL property of the anchor tag
+  let aUrl = a.href.split('?')[0].split('#')[0];
+  if (aUrl === currentUrl || (currentUrl.endsWith('/') && a.getAttribute('href') === 'index.html')) {
     a.classList.add('active');
   }
 });
