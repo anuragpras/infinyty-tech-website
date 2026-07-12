@@ -61,7 +61,8 @@ html { font-family: 'Outfit', sans-serif; font-size: 16px; scroll-behavior: smoo
 body { background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
-button, input, select, textarea, ::placeholder { font-family: 'Outfit', sans-serif !important; font-size: inherit; line-height: inherit; color: inherit; margin: 0; }
+button, input, select, textarea { font-family: 'Outfit', sans-serif !important; font-size: inherit; line-height: inherit; color: inherit; margin: 0; }
+::placeholder { font-family: 'Outfit', sans-serif !important; }
 button { cursor: pointer; background: none; border: none; padding: 0; appearance: none; -webkit-appearance: none; }
 
 /* ── SCROLLBAR ── */
