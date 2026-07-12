@@ -106,13 +106,9 @@ header.scrolled { box-shadow: 0 2px 24px var(--shadow-color); }
   color: var(--text-muted); transition: color .2s, background .2s;
   position: relative;
 }
-.nav-links a::after {
-  content: ''; position: absolute; bottom: 4px; left: 50%; right: 50%;
-  height: 2px; background: var(--gradient-primary); border-radius: 2px;
-  transition: left .25s ease, right .25s ease;
-}
+
 .nav-links a:hover, .nav-links a.active { color: var(--primary); background: var(--nav-hover-bg); }
-.nav-links a.active::after { left: 12px; right: 12px; }
+
 .nav-actions { display: flex; align-items: center; gap: .75rem; }
 
 /* Hamburger */
